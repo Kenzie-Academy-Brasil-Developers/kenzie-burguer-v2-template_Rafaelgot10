@@ -40,7 +40,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
     try {
       setLoading(true);
       const response = await api.post('/login', formData);
-
+      console.log(response);
       localStorage.setItem('@token', response.data.token);
       console.log('Login realizado com sucesso!');
       navigate('/shop');

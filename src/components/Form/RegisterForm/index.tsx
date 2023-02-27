@@ -5,7 +5,6 @@ import { StyledButton } from '../../../styles/button';
 import { StyledForm } from '../../../styles/form';
 import { UserContext } from '../../../provider/UserContext';
 import { IRegisterFormValues } from '../../../provider/@Types';
-
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerFormSchema } from './validations';
 
