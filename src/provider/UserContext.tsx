@@ -19,7 +19,6 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       setLoading(true);
       const response = await api.post('/users', formData);
       console.log(response);
-      localStorage.setItem('@token', response.data.accessToken);
       navigate('/shop');
     } catch (error) {
       console.log(error);
@@ -33,8 +32,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       setLoading(true);
       const response = await api.post('/login', formData);
       console.log(response);
-      localStorage.setItem('@token', response.data.token);
-      console.log('Login realizado com sucesso!');
+      localStorage.setItem('@token', response.data.accessToken);
       navigate('/shop');
     } catch (error) {
       console.log(error);

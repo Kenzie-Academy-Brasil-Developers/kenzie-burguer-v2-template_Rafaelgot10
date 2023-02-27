@@ -25,7 +25,6 @@ export interface IUserContext {
 }
 
 export interface ICartContext {
-  logoutUser: () => void;
   closeModal: () => void;
   modal: boolean;
   showModal: () => void;

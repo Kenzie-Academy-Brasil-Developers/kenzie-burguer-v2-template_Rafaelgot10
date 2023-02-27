@@ -19,13 +19,8 @@ export const CartProvider = ({ children }: IDefaultProviderProps) => {
     console.log(modal);
   };
 
-  const logoutUser = () => {
-    localStorage.removeItem('@token');
-    navigate('/');
-  };
-
   return (
-    <CartContext.Provider value={{ logoutUser, closeModal, modal, showModal }}>
+    <CartContext.Provider value={{ closeModal, modal, showModal }}>
       {children}
     </CartContext.Provider>
   );

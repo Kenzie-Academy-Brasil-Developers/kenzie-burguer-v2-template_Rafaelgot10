@@ -10,8 +10,6 @@ import { useContext } from 'react';
 const ShopPage = () => {
   const { modal } = useContext(CartContext);
 
-  console.log(modal);
-
   return (
     <StyledShopPage>
       {modal ? <CartModal /> : <></>}
