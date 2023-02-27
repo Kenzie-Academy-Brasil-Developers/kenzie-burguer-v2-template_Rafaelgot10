@@ -7,8 +7,12 @@ import { useContext, useState } from 'react';
 import { CartContext } from '../../../provider/CartContext';
 
 const CartProductList = () => {
-  const { productsListCart } = useContext(CartContext);
+  const { productsListCart, setProductsListCart } = useContext(CartContext);
   // const [totalValue, setTotalValue] = useState(0);
+  const removeAllToCart = () => {
+    setProductsListCart([]);
+  };
+
   let totalValue = 0;
   return (
     <StyledCartProductList>
@@ -34,7 +38,11 @@ const CartProductList = () => {
           <StyledParagraph className='total'>{totalValue} </StyledParagraph>
         </>
       </div>
-      <StyledButton $buttonSize='default' $buttonStyle='gray'>
+      <StyledButton
+        onClick={() => removeAllToCart()}
+        $buttonSize='default'
+        $buttonStyle='gray'
+      >
         Remover todos
       </StyledButton>
     </StyledCartProductList>
