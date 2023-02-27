@@ -4,17 +4,9 @@ import {
   IDefaultProviderProps,
   ILoginFormValues,
   IRegisterFormValues,
-  // IUserContext,
+  IUserContext,
 } from './@Types';
 import { api } from '../services/api';
-
-export interface IUserContext {
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  registerUser: (formData: IRegisterFormValues) => Promise<void>;
-  loginUser: (formData: ILoginFormValues) => Promise<void>;
-  logoutUser: () => void;
-}
 
 export const UserContext = createContext({} as IUserContext);
 

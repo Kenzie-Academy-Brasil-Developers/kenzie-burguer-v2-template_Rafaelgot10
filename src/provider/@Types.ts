@@ -23,3 +23,10 @@ export interface IUserContext {
   loginUser: (formData: ILoginFormValues) => Promise<void>;
   logoutUser: () => void;
 }
+
+export interface ICartContext {
+  logoutUser: () => void;
+  closeModal: () => void;
+  modal: boolean;
+  showModal: () => void;
+}
