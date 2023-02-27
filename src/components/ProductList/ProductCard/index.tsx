@@ -17,8 +17,19 @@ const ProductCard = ({ name, category, price, img, id }: IproductProps) => {
     useContext(CartContext);
 
   const addToCart = () => {
+    console.log(productsListCart);
+    let aux = true;
+
+    productsListCart?.map((sameProduct) => {
+      if (sameProduct.id == id) {
+        console.log('ja esta la');
+        aux = false;
+      }
+    });
+
     productList?.map((product) => {
-      if (product.id == id) {
+      if (product.id == id && aux == true) {
+        // tipar
         const newProduct = [...productsListCart, product];
         setProductsListCart(newProduct);
       }

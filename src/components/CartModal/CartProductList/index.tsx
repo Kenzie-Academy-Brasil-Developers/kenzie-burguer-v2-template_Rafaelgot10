@@ -3,12 +3,13 @@ import CartProductCard from './CartProductCard';
 import { StyledCartProductList } from './style';
 import { StyledButton } from '../../../styles/button';
 import { StyledParagraph } from '../../../styles/typography';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../../provider/CartContext';
 
 const CartProductList = () => {
   const { productsListCart } = useContext(CartContext);
-
+  // const [totalValue, setTotalValue] = useState(0);
+  let totalValue = 0;
   return (
     <StyledCartProductList>
       <ul>
@@ -17,15 +18,21 @@ const CartProductList = () => {
             key={product.id}
             img={product.img}
             name={product.name}
+            id={product.id}
           />
         ))}
       </ul>
 
       <div className='totalBox'>
-        <StyledParagraph>
-          <strong>Total</strong>
-        </StyledParagraph>
-        <StyledParagraph className='total'>ainda n sei </StyledParagraph>
+        <>
+          <StyledParagraph>
+            <strong>Total</strong>
+          </StyledParagraph>
+          {productsListCart?.map((product) => {
+            totalValue = totalValue + product.price;
+          })}
+          <StyledParagraph className='total'>{totalValue} </StyledParagraph>
+        </>
       </div>
       <StyledButton $buttonSize='default' $buttonStyle='gray'>
         Remover todos

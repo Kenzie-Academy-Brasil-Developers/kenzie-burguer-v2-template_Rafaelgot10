@@ -29,8 +29,8 @@ const CartModal = () => {
         <div className='cartBox'>
           <>
             {console.log(productsListCart)}
-            {/* tipar */}
-            {productsListCart.length === 0 ? (
+
+            {productsListCart?.length === 0 ? (
               <div className='emptyBox'>
                 <StyledTitle tag='h3' $fontSize='three' textAlign='center'>
                   Sua sacola está vazia

@@ -35,7 +35,7 @@ const ProductList = () => {
 
   return (
     <StyledProductList>
-      {productList.map((product: IproductProps) => (
+      {productList?.map((product: IproductProps) => (
         <ProductCard
           key={product.id}
           id={product.id}
