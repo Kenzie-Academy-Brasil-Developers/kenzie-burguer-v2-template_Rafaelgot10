@@ -6,7 +6,7 @@ import { StyledCartModalBox } from './style';
 import { StyledParagraph, StyledTitle } from '../../styles/typography';
 
 const CartModal = () => {
-  const { closeModal } = useContext(CartContext);
+  const { closeModal, productsListCart } = useContext(CartContext);
 
   return (
     <StyledCartModalBox>
@@ -25,15 +25,24 @@ const CartModal = () => {
             <MdClose size={21} />
           </button>
         </header>
-        <div className='cartBox'>
-          <CartProductList />
 
-          <div className='emptyBox'>
-            <StyledTitle tag='h3' $fontSize='three' textAlign='center'>
-              Sua sacola está vazia
-            </StyledTitle>
-            <StyledParagraph textAlign='center'>Adicione itens</StyledParagraph>
-          </div>
+        <div className='cartBox'>
+          <>
+            {console.log(productsListCart)}
+            {/* tipar */}
+            {productsListCart.length === 0 ? (
+              <div className='emptyBox'>
+                <StyledTitle tag='h3' $fontSize='three' textAlign='center'>
+                  Sua sacola está vazia
+                </StyledTitle>
+                <StyledParagraph textAlign='center'>
+                  Adicione itens
+                </StyledParagraph>
+              </div>
+            ) : (
+              <CartProductList />
+            )}
+          </>
         </div>
       </dialog>
     </StyledCartModalBox>
