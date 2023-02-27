@@ -6,6 +6,8 @@ import { StyledForm } from '../../../styles/form';
 import { UserContext } from '../../../provider/UserContext';
 import { IRegisterFormValues } from '../../../provider/@Types';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { loginFormSchema } from './validations';
+
 const LoginForm = () => {
   const { loginUser } = useContext(UserContext);
 
@@ -15,6 +17,7 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<IRegisterFormValues>({
     mode: 'onBlur',
+    resolver: yupResolver(loginFormSchema),
   });
 
   const submit: SubmitHandler<IRegisterFormValues> = (formdata) => {
