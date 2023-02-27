@@ -6,19 +6,25 @@ import { StyledForm } from '../../../styles/form';
 import { UserContext } from '../../../provider/UserContext';
 import { IRegisterFormValues } from '../../../provider/@Types';
 
+import { yupResolver } from '@hookform/resolvers/yup';
+import { registerFormSchema } from './validations';
+
 const RegisterForm = () => {
   const { registerUser } = useContext(UserContext);
 
   const {
     register,
     handleSubmit,
-    // formState: { errors },
-  } = useForm<IRegisterFormValues>({ mode: 'onBlur' });
+    formState: { errors },
+  } = useForm<IRegisterFormValues>({
+    mode: 'onBlur',
+    resolver: yupResolver(registerFormSchema),
+  });
 
   const submit: SubmitHandler<IRegisterFormValues> = (formdata) => {
     console.log(formdata);
 
-    // registerUser(formdata);
+    registerUser(formdata);
   };
   return (
     <StyledForm onSubmit={handleSubmit(submit)}>
@@ -28,6 +34,7 @@ const RegisterForm = () => {
         register={register('name')}
         type='text'
       />
+      <span>{errors.name?.message}</span>
 
       <Input
         label='Email'
@@ -35,6 +42,7 @@ const RegisterForm = () => {
         register={register('email')}
         type='email'
       />
+      <span>{errors.email?.message}</span>
 
       <Input
         label='Senha'
@@ -42,6 +50,7 @@ const RegisterForm = () => {
         register={register('password')}
         type='password'
       />
+      <span>{errors.password?.message}</span>
 
       <Input
         label='Confirme sua senha'
@@ -49,6 +58,7 @@ const RegisterForm = () => {
         register={register('confirmPassword')}
         type='password'
       />
+      <span>{errors.confirmPassword?.message}</span>
 
       <StyledButton type='submit' $buttonSize='default' $buttonStyle='gray'>
         Cadastrar
