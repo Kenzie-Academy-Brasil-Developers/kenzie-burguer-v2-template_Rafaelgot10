@@ -7,6 +7,7 @@ import {
   IUserContext,
 } from './@Types';
 import { api } from '../services/api';
+import { toast } from 'react-toastify';
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -17,11 +18,16 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const registerUser = async (formData: IRegisterFormValues) => {
     try {
       setLoading(true);
+      //tipar
       const response = await api.post('/users', formData);
       console.log(response);
-      navigate('/shop');
+      toast.success('Usuario cadastrado com sucesso ');
+      navigate('/');
     } catch (error) {
-      console.log(error);
+      //tipar
+      if (error.response.data == 'Email already exists') {
+        toast.error('Email já cadastrado, insira outro email');
+      } else console.log(error);
     } finally {
       setLoading(false);
     }
@@ -30,12 +36,19 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const loginUser = async (formData: ILoginFormValues) => {
     try {
       setLoading(true);
+      //tipar
       const response = await api.post('/login', formData);
       console.log(response);
       localStorage.setItem('@token', response.data.accessToken);
       navigate('/shop');
     } catch (error) {
-      console.log(error);
+      //tipar
+      if (error.response.data == 'Incorrect password') {
+        toast.error('Senha incorreta');
+        //tipar
+      } else if (error.response.data == 'Cannot find user') {
+        toast.error('Email incorreto');
+      } else console.log(error);
     } finally {
       setLoading(false);
     }

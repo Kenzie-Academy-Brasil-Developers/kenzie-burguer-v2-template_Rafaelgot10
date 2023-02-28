@@ -3,6 +3,7 @@ import { StyledCartProductCard } from './style';
 import { StyledTitle } from '../../../../styles/typography';
 import { CartContext } from '../../../../provider/CartContext';
 import { useContext } from 'react';
+import { toast } from 'react-toastify';
 
 export interface IproductCartProps {
   name: string;
@@ -17,6 +18,7 @@ const CartProductCard = ({ img, name, id }: IproductCartProps) => {
   const removeToCart = (id: number | undefined) => {
     const newCart = productsListCart?.filter((product) => product.id != id);
     console.log(newCart);
+    toast.success('Item removido do carrinho com sucesso');
     //tipar
     setProductsListCart(newCart);
   };

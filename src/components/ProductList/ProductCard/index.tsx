@@ -3,6 +3,7 @@ import { StyledButton } from '../../../styles/button';
 import { StyledParagraph, StyledTitle } from '../../../styles/typography';
 import { useContext } from 'react';
 import { CartContext } from '../../../provider/CartContext';
+import { toast } from 'react-toastify';
 
 export interface IproductProps {
   name: string;
@@ -22,7 +23,7 @@ const ProductCard = ({ name, category, price, img, id }: IproductProps) => {
 
     productsListCart?.map((sameProduct) => {
       if (sameProduct.id == id) {
-        console.log('ja esta la');
+        toast.warn('Este item já está no carrinho');
         aux = false;
       }
     });
@@ -32,6 +33,7 @@ const ProductCard = ({ name, category, price, img, id }: IproductProps) => {
         // tipar
         const newProduct = [...productsListCart, product];
         setProductsListCart(newProduct);
+        toast.success('Item adicionado ao carrinho com sucesso');
       }
     });
   };
@@ -46,7 +48,12 @@ const ProductCard = ({ name, category, price, img, id }: IproductProps) => {
           {name}
         </StyledTitle>
         <StyledParagraph className='category'>{category}</StyledParagraph>
-        <StyledParagraph className='price'>{price}</StyledParagraph>
+        <StyledParagraph className='price'>
+          {price.toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+          })}
+        </StyledParagraph>
         <StyledButton
           onClick={() => addToCart()}
           $buttonSize='medium'

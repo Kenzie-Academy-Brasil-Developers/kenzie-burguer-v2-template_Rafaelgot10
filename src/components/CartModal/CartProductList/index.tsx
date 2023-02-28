@@ -3,14 +3,16 @@ import CartProductCard from './CartProductCard';
 import { StyledCartProductList } from './style';
 import { StyledButton } from '../../../styles/button';
 import { StyledParagraph } from '../../../styles/typography';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { CartContext } from '../../../provider/CartContext';
+import { toast } from 'react-toastify';
 
 const CartProductList = () => {
   const { productsListCart, setProductsListCart } = useContext(CartContext);
   // const [totalValue, setTotalValue] = useState(0);
   const removeAllToCart = () => {
     setProductsListCart([]);
+    toast.success('Itens removidos do carrinho com sucesso');
   };
 
   let totalValue = 0;
@@ -35,7 +37,12 @@ const CartProductList = () => {
           {productsListCart?.map((product) => {
             totalValue = totalValue + product.price;
           })}
-          <StyledParagraph className='total'>{totalValue} </StyledParagraph>
+          <StyledParagraph className='total'>
+            {totalValue.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}{' '}
+          </StyledParagraph>
         </>
       </div>
       <StyledButton
