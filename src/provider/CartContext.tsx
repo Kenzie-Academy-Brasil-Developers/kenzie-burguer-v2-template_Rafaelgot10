@@ -21,12 +21,10 @@ export const CartProvider = ({ children }: IDefaultProviderProps) => {
 
   const closeModal = () => {
     setModal(false);
-    console.log(modal);
   };
 
   const showModal = () => {
     setModal(true);
-    console.log(modal);
   };
 
   return (

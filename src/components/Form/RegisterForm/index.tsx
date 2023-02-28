@@ -21,8 +21,6 @@ const RegisterForm = () => {
   });
 
   const submit: SubmitHandler<IRegisterFormValues> = (formdata) => {
-    console.log(formdata);
-
     registerUser(formdata);
   };
   return (

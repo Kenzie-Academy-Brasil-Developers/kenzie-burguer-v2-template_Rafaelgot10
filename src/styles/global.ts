@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     border: none;
     list-style: none;
     text-decoration: none;
+    transition: 1s;
   }
 
   button{

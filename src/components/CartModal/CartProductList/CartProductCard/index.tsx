@@ -17,7 +17,7 @@ const CartProductCard = ({ img, name, id }: IproductCartProps) => {
 
   const removeToCart = (id: number | undefined) => {
     const newCart = productsListCart?.filter((product) => product.id != id);
-    console.log(newCart);
+
     toast.success('Item removido do carrinho com sucesso');
     //tipar
     setProductsListCart(newCart);

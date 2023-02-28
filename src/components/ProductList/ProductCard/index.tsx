@@ -18,7 +18,6 @@ const ProductCard = ({ name, category, price, img, id }: IproductProps) => {
     useContext(CartContext);
 
   const addToCart = () => {
-    console.log(productsListCart);
     let aux = true;
 
     productsListCart?.map((sameProduct) => {

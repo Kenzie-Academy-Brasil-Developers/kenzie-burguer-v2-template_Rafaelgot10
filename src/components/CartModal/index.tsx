@@ -28,8 +28,6 @@ const CartModal = () => {
 
         <div className='cartBox'>
           <>
-            {console.log(productsListCart)}
-
             {productsListCart?.length === 0 ? (
               <div className='emptyBox'>
                 <StyledTitle tag='h3' $fontSize='three' textAlign='center'>

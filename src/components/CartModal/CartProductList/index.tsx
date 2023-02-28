@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 
 const CartProductList = () => {
   const { productsListCart, setProductsListCart } = useContext(CartContext);
-  // const [totalValue, setTotalValue] = useState(0);
   const removeAllToCart = () => {
     setProductsListCart([]);
     toast.success('Itens removidos do carrinho com sucesso');

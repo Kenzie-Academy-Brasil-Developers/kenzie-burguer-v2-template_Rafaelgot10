@@ -25,7 +25,7 @@ const ShopPage = () => {
 
   return (
     <StyledShopPage>
-      {modal ? <CartModal /> : <></>}
+      {modal ? <CartModal /> : null}
 
       <Header />
       <main>
@@ -38,3 +38,6 @@ const ShopPage = () => {
 };
 
 export default ShopPage;
+
+{
+}

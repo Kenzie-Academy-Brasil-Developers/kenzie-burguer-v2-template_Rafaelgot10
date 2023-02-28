@@ -20,7 +20,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       setLoading(true);
       //tipar
       const response = await api.post('/users', formData);
-      console.log(response);
+
       toast.success('Usuario cadastrado com sucesso ');
       navigate('/');
     } catch (error) {
@@ -38,7 +38,7 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
       setLoading(true);
       //tipar
       const response = await api.post('/login', formData);
-      console.log(response);
+
       localStorage.setItem('@token', response.data.accessToken);
       navigate('/shop');
     } catch (error) {
