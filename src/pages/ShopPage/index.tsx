@@ -7,7 +7,7 @@ import { StyledContainer } from '../../styles/grid';
 import { CartContext } from '../../provider/CartContext';
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 const ShopPage = () => {
   const { modal } = useContext(CartContext);
@@ -38,6 +38,3 @@ const ShopPage = () => {
 };
 
 export default ShopPage;
-
-{
-}

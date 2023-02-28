@@ -1,13 +1,23 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+// import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 export interface IDefaultProviderProps {
   children: React.ReactNode;
+}
+
+export interface IresponseDefault {
+  accessToken: string;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+  };
 }
 
 export interface IRegisterFormValues {
   name: string;
   email: string;
   password: string;
+  confirmPassword: string;
   //register: UseFormRegister<FieldValues>;
 }
 
@@ -35,11 +45,9 @@ export interface ICartContext {
   modal: boolean;
   showModal: () => void;
   setProductsListCart: React.Dispatch<
-    React.SetStateAction<IProductsListCart[] | null>
+    React.SetStateAction<IProductsListCart[]>
   >;
-  productsListCart: IProductsListCart[] | null;
-  productList: IProductsListCart[] | null;
-  setProductList: React.Dispatch<
-    React.SetStateAction<IProductsListCart[] | null>
-  >;
+  productsListCart: IProductsListCart[];
+  productList: IProductsListCart[];
+  setProductList: React.Dispatch<React.SetStateAction<IProductsListCart[]>>;
 }

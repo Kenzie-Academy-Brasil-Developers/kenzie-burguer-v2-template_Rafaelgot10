@@ -11,13 +11,11 @@ export const CartContext = createContext({} as ICartContext);
 export const CartProvider = ({ children }: IDefaultProviderProps) => {
   const [modal, setModal] = useState(false);
 
-  const [productsListCart, setProductsListCart] = useState<
-    IProductsListCart[] | null
-  >([]);
-
-  const [productList, setProductList] = useState<IProductsListCart[] | null>(
+  const [productsListCart, setProductsListCart] = useState<IProductsListCart[]>(
     []
   );
+
+  const [productList, setProductList] = useState<IProductsListCart[]>([]);
 
   const closeModal = () => {
     setModal(false);

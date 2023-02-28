@@ -14,7 +14,7 @@ export interface IproductProps {
 }
 
 const ProductCard = ({ name, category, price, img, id }: IproductProps) => {
-  const { productsListCart, setProductsListCart, productList, setProductList } =
+  const { productsListCart, setProductsListCart, productList } =
     useContext(CartContext);
 
   const addToCart = () => {
